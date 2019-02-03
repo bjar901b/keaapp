@@ -1,0 +1,22 @@
+body{
+	background-color: blue;
+}	
+
+#content {
+	width: 75%;
+	margin: auto;
+}
+
+#bleDeviceList{
+	
+}	
+#messageInput{
+	
+}
+#list{
+	background-color: white;
+}
+
+#refreshButton{
+	width: 100%;
+}
