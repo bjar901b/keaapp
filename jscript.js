@@ -124,4 +124,5 @@ function saveSettings() {
 
 function incHeight() {
 	sid++;
+	document.getElementById("messageInput4").innerHTML = sid;
 }
