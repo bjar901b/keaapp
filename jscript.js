@@ -32,7 +32,9 @@ var sid = localStorage.getItem('sitting') == null ? '80' : localStorage.getItem(
 var staa = localStorage.getItem('standing') == null ? '120' : localStorage.getItem('standing');
 var ConnDeviceId;
 var deviceList =[];
- 
+
+document.getElementById('newHeight').innerHTML = sid;
+
 function onLoad(){
 	document.addEventListener('deviceready', onDeviceReady, false);
     bleDeviceList.addEventListener('touchstart', conn, false); // assume not scrolling
@@ -119,8 +121,8 @@ function onError(reason)  {
 function saveSettings() {
 	sid = document.getElementById('messageInput2').value;
 	staa = document.getElementById('messageInput3').value;
-	localStorage.putItem('sitting', sid);
-	localStorage.putItem('standing', staa);
+	localStorage.setItem('sitting', sid);
+	localStorage.setItem('standing', staa);
 	
 	document.getElementById("saved").innerHTML = "Saved settings";
 }
