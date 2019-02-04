@@ -126,3 +126,7 @@ function incHeight() {
 	sid++;
 	document.getElementById("newHeight").innerHTML = sid;
 }
+
+function postHeight() {
+	document.getElementById("newHeight").innerHTML = sid;
+}
