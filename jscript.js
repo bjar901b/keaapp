@@ -33,7 +33,24 @@ var staa = localStorage.getItem('standing') == null ? '120' : localStorage.getIt
 var ConnDeviceId;
 var deviceList =[];
 
-document.getElementById('newHeight').innerHTML = sid;
+var newHeightElem = document.getElementById('newHeight');
+
+if(newHeightElem != null){
+	newHeight.innerHTML = sid;
+}
+
+var messageInput2Elem = document.getElementById('messageInput2');
+
+if(messageInput2Elem != null){
+	messageInput2Elem.value = sid;
+}
+
+var messageInput3Elem = document.getElementById('messageInput3');
+
+if(messageInput3Elem != null){
+	messageInput3Elem.value = staa;
+}
+
 
 function onLoad(){
 	document.addEventListener('deviceready', onDeviceReady, false);
