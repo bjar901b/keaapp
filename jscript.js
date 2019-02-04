@@ -123,7 +123,7 @@ function saveSettings() {
 }
 
 function incHeight() {
-	sid++;
+	sid += 1;
 	document.getElementById("newHeight").innerHTML = sid;
 }
 
@@ -132,6 +132,6 @@ function postHeight() {
 }
 
 function decHeight() {
-	sid--;
+	sid -= 1;
 	document.getElementById("newHeight").innerHTML = sid;
 }
