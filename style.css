@@ -16,6 +16,12 @@ img{
 #messageInput{
 	
 }
+#messageInput2{
+	
+}
+#messageInput3{
+	
+}
 #list{
 	background-color: white;
 }
@@ -26,3 +32,8 @@ img{
 #sendButton{
 	width: 50%;
 }
+
+#saveButton {
+		width: 50%;
+}
+
