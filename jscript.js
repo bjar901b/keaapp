@@ -28,8 +28,8 @@ var blue ={
     txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
     rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
-var sid;
-var staa;
+var sid = "80";
+var staa = "12";
 var ConnDeviceId;
 var deviceList =[];
  
@@ -123,7 +123,7 @@ function saveSettings() {
 }
 
 function incHeight() {
-	sid += 1;
+	sid++;
 	document.getElementById("newHeight").innerHTML = sid;
 }
 
@@ -132,6 +132,6 @@ function postHeight() {
 }
 
 function decHeight() {
-	sid -= 1;
+	sid--;
 	document.getElementById("newHeight").innerHTML = sid;
 }
