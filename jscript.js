@@ -84,7 +84,7 @@ function onConnect(){
 //failure
 function onConnError(){
 	alert("Problem connecting");
-	document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
+	document.getElementById("statusDiv").innerHTML = " Status: Disconnected";
 }
 
  function onData(data){ // data received from Arduino
