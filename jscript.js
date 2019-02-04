@@ -117,8 +117,8 @@ function onError(reason)  {
 }
 
 function saveSettings() {
-	sid = stringToBytes(messageInput2.value);
-	staa = stringToBytes(messageInput3.value);
+	sid = messageInput2.value;
+	staa = messageInput3.value;
 	document.getElementById("saved").innerHTML = "Saved settings";
 }
 
