@@ -130,3 +130,8 @@ function incHeight() {
 function postHeight() {
 	document.getElementById("newHeight").innerHTML = sid;
 }
+
+function decHeight() {
+	sid--;
+	document.getElementById("newHeight").innerHTML = sid;
+}
