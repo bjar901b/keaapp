@@ -1,6 +1,3 @@
-// Based on an example:
-//https://github.com/don/cordova-plugin-ble-central
-
 
 // ASCII only
 function bytesToString(buffer) {
@@ -57,10 +54,17 @@ function refreshDeviceList(){
 function onDiscoverDevice(device){
 	//Make a list in html and show devises
 	
-		var listItem = document.createElement('li'),
-		html = device.name+ "," + device.id;
-		listItem.innerHTML = html;
-		document.getElementById("bleDeviceList").appendChild(listItem);
+		
+		if( device.name == "*Insert name*") {
+			var listItem = document.createElement('li'),
+			html = device.name+ " - " + device.id;
+			listItem.innerHTML = html;
+			document.getElementById("bleDeviceList").appendChild(listItem);
+		}
+		else {
+			refreshDeviceList();
+		}
+		
 	
 }
 
@@ -83,11 +87,11 @@ function onConnect(){
 
 //failure
 function onConnError(){
-	alert("Problem connecting");
-	document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
+	alert("Connection error");
+	document.getElementById("statusDiv").innerHTML = " Status: Disconnected";
 }
 
- function onData(data){ // data received from Arduino
+function onData(data){ // data received from Arduino
 	document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
 }
 
