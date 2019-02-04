@@ -28,7 +28,8 @@ var blue ={
     txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
     rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
-
+var sid = 80;
+var staa;
 var ConnDeviceId;
 var deviceList =[];
  
@@ -120,4 +121,7 @@ function saveSettings() {
 	var staa = stringToBytes(messageInput3.value);
 	document.getElementById("saved").innerHTML = "Saved settings";
 }
-	
+
+function incHeight() {
+	sid++;
+}
