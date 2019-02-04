@@ -88,6 +88,23 @@ function onConnError(){
 	document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
 }
 
+function onData(data){ // data received from Arduino
+	document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
+}
+
+function data(txt){
+	messageInput.value = txt;
+}	
+
+function sendData() { // send data to Arduino
+	 var data = stringToBytes(messageInput.value);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
+}
+	
+function onSend(){
+	document.getElementById("sendDiv").innerHTML = "Sent: " + messageInput.value + "<br/>";
+}
+
 function disconnect() {
 	ble.disconnect(deviceId, onDisconnect, onError);
 }
