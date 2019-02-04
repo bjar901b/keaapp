@@ -115,4 +115,8 @@ function onError(reason)  {
 	alert("ERROR: " + reason); // real apps should use notification.alert
 }
 
+function saveSettings() {
+	var sid = stringToBytes(messageInput2.value);
+	var staa = stringToBytes(messageInput3.value);
+}
 	
