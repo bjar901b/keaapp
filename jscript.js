@@ -149,7 +149,8 @@ function saveSettings() {
 function incHeight() {
 	sit++;
 	document.getElementById("newHeight").innerHTML = sit;
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sit, onSend, onError);
+	var connData = stringToBytes(sit);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, connData, onSend, onError);
 }
 
 function postHeight() {
@@ -159,5 +160,6 @@ function postHeight() {
 function decHeight() {
 	sit--;
 	document.getElementById("newHeight").innerHTML = sit;
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sit, onSend, onError);
+	var connData = stringToBytes(sit);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, connData, onSend, onError);
 }
