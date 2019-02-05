@@ -8,10 +8,11 @@ img{
 #content {
 	width: 75%;
 	margin: auto;
+	text-align: center;
 }
 
 #bleDeviceList{
-	
+	text-align: center;
 }	
 #messageInput{
 	
@@ -19,16 +20,30 @@ img{
 
 #list{
 	background-color: white;
+	text-align: center;
 }
 
 #refreshButton{
 	width: 40%;
+	text-align: center;
 }
 #sendButton{
 	width: 40%;
+	text-align: center;
 }
 
 #saveButton {
 		width: 40%;
+		text-align: center;
+}
+
+#plusButton {
+		width: 15%;
+		text-align: center;
+}
+
+#minusButton {
+		width: 15%;
+		text-align: center;
 }
 

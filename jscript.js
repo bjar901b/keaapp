@@ -147,16 +147,12 @@ function saveSettings() {
 }
 
 function incHeight() {
-	var incData = stringToBytes(sit);
 	sit++;
 	document.getElementById("newHeight").innerHTML = sit;
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, incData, onSend, onError);
 }
 
 
 function decHeight() {
-	var decData = stringToBytes(sit);
 	sit--;
 	document.getElementById("newHeight").innerHTML = sit;
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, decData, onSend, onError);
 }
