@@ -28,27 +28,27 @@ var blue ={
     txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
     rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
-var sid = localStorage.getItem('sitting') == null ? '80' : localStorage.getItem('sitting');
-var staa = localStorage.getItem('standing') == null ? '120' : localStorage.getItem('standing');
+var sit = localStorage.getItem('sitting') == null ? '80' : localStorage.getItem('sitting');
+var stand = localStorage.getItem('standing') == null ? '120' : localStorage.getItem('standing');
 var ConnDeviceId;
 var deviceList =[];
 
 var newHeightElem = document.getElementById('newHeight');
 
 if(newHeightElem != null){
-	newHeight.innerHTML = sid;
+	newHeight.innerHTML = sit;
 }
 
 var messageInput2Elem = document.getElementById('messageInput2');
 
 if(messageInput2Elem != null){
-	messageInput2Elem.value = sid;
+	messageInput2Elem.value = sit;
 }
 
 var messageInput3Elem = document.getElementById('messageInput3');
 
 if(messageInput3Elem != null){
-	messageInput3Elem.value = staa;
+	messageInput3Elem.value = stand;
 }
 
 
@@ -136,24 +136,24 @@ function onError(reason)  {
 }
 
 function saveSettings() {
-	sid = document.getElementById('messageInput2').value;
-	staa = document.getElementById('messageInput3').value;
-	localStorage.setItem('sitting', sid);
-	localStorage.setItem('standing', staa);
+	sit = document.getElementById('messageInput2').value;
+	stand = document.getElementById('messageInput3').value;
+	localStorage.setItem('sitting', sit);
+	localStorage.setItem('standing', stand);
 	
 	document.getElementById("saved").innerHTML = "Saved settings";
 }
 
 function incHeight() {
-	sid++;
-	document.getElementById("newHeight").innerHTML = sid;
+	sit++;
+	document.getElementById("newHeight").innerHTML = sit;
 }
 
 function postHeight() {
-	document.getElementById("newHeight").innerHTML = sid;
+	document.getElementById("newHeight").innerHTML = sit;
 }
 
 function decHeight() {
-	sid--;
-	document.getElementById("newHeight").innerHTML = sid;
+	sit--;
+	document.getElementById("newHeight").innerHTML = sit;
 }
