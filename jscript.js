@@ -28,7 +28,7 @@ var blue ={
     txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
     rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
-var sit = localStorage.getItem('sitting') == null ? '80' : localStorage.getItem('sitting');
+var sit = localStorage.getItem('sitting') == null ? '60' : localStorage.getItem('sitting');
 var stand = localStorage.getItem('standing') == null ? '120' : localStorage.getItem('standing');
 var ConnDeviceId;
 var deviceList =[];
