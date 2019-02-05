@@ -96,7 +96,7 @@ function conn(){
  
  //succes
 function onConnect(){
-	var connData = stringToBytes(sit);
+	var connData = stringToBytes(document.getElementById('messageInput3').value);
 	document.getElementById("statusDiv").innerHTML = " Status: Connected";
 	document.getElementById("bleId").innerHTML = ConnDeviceId;
 	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
