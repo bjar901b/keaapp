@@ -147,19 +147,16 @@ function saveSettings() {
 }
 
 function incHeight() {
+	var incData = stringToBytes(sit);
 	sit++;
 	document.getElementById("newHeight").innerHTML = sit;
-	var connData = stringToBytes(sit);
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, connData, onSend, onError);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, incData, onSend, onError);
 }
 
-function postHeight() {
-	document.getElementById("newHeight").innerHTML = sit;
-}
 
 function decHeight() {
+	var decData = stringToBytes(sit);
 	sit--;
 	document.getElementById("newHeight").innerHTML = sit;
-	var connData = stringToBytes(sit);
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, connData, onSend, onError);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, decData, onSend, onError);
 }
