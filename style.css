@@ -1,5 +1,6 @@
 body{
 	background-color: cyan;
+	font-family:sans-serif;
 }	
 img{
 	width: 100%;	
@@ -46,4 +47,12 @@ img{
 		width: 15%;
 		text-align: center;
 }
-
+.page{
+	display:none;
+}
+.page.active{
+	display:block;
+}
+.page-link{
+	cursor:pointer;
+}

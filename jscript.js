@@ -1,3 +1,11 @@
+$(document).ready(function(){
+	$('.page-link').on('click', function(){
+		$('.active').removeClass('active');
+		$('#'+$(this).attr('data-link')+'-page').addClass('active');
+	});	
+});
+
+
 // Based on an example:
 //https://github.com/don/cordova-plugin-ble-central
 
@@ -28,19 +36,24 @@ var blue ={
     txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
     rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
+// oprettter 2 variabler vi kan arbejde med, henter værdier ind hvis de findes i localstorage allerede, ellers opretter vi standard værdier. 
 var sit = localStorage.getItem('sitting') == null ? '60' : localStorage.getItem('sitting');
 var stand = localStorage.getItem('standing') == null ? '120' : localStorage.getItem('standing');
 var ConnDeviceId;
 var deviceList =[];
 
+//sætter variablen til at hente newHeight div feltet så vi kan tjekke den
 var newHeightElem = document.getElementById('newHeight');
 
+//tjekker om den har en værdi, ellers indsætter den vores siddende værdi
 if(newHeightElem != null){
 	newHeight.innerHTML = sit;
 }
 
+//vi opretter en variabel så vi kan tjekke på messagefeltet
 var messageInput2Elem = document.getElementById('messageInput2');
 
+//Tjekker om der en værdi allerede i feltet, og hvis ikke så sætter den vores nuværende siddende højde
 if(messageInput2Elem != null){
 	messageInput2Elem.value = sit;
 }

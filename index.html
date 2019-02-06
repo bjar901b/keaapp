@@ -7,40 +7,67 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
 		<link rel = "stylesheet" type = "text/css" href = "style.css">  
-		<script type="text/javascript" src="cordova.js"></script> 
-        <script type="text/javascript" src="jscript.js"></script>
         <title>Super Table</title>
     </head>
      <body onload="onLoad()">
 
-		<h1>KEA</h1>
-		<p> Select a table from the list below </p>
-           
-		<div id="bleDeviceList"> </div>  
-		<button id="refreshButton" onClick = "refreshDeviceList()">Refresh</button>
-		<br><br>
-		
-		<div id="statusDiv">Status: Disconnected</div>
-		<div id="bleId">Device ID:</div>
-		<div id="debugDiv"></div>
-		<br><br>
-		<input type="text" id="messageInput" value=""/>
-		<br>
-		<button id="sendButton" onclick = "sendData()">Send</button>
-		<br>
-		
-		<br>
-		<div id="sendDiv"></div>
-		<br>
-		
-		<a href = "settings.html"> Settings</a>
+		<div id="main-page" class="page active">
+			<h1>KEA</h1>
+			<p> Select a table from the list below </p>
+			   
+			<div id="bleDeviceList"> </div>  
+			<button id="refreshButton" onClick = "refreshDeviceList()">Refresh</button>
+			<br><br>
+			
+			<div id="statusDiv">Status: Disconnected</div>
+			<div id="bleId">Device ID:</div>
+			<div id="debugDiv"></div>
+			<br><br>
+			<br>
+			
+			<br>
+			<div id="sendDiv"></div>
+			<br>
+			
+			<div id="receiveDiv"></div>
+		</div>
+		<div id="settings-page" class="page">
+			<p> Sitting height</p>
+			<input type="text" id="messageInput2" value=""/>
+			<br><br>
+			<p> Standing height</p>
+			<input type="text" id="messageInput3" value=""/>
+			<br><br>
+			<button id="saveButton" onClick = "saveSettings()">Save settings</button>
+			<br><br>
+			<div id= "saved"> </div>
+			<br>
+		</div>
+		<div id="manual-page" class="page">
+			<p>Configure height manually</p>
+			<br>
+			<button id="plusButton" onclick="incHeight()">+</button>
+			<br><br>
+			<div id="newHeight"></div>
+			<br>
+			<button id="minusButton" onclick = "decHeight()">-</button>
+			<br><br>
+			<input type="text" id="messageInput" value=""/>
+			<br>
+			<button id="sendButton" onclick = "sendData()">Send</button>
+			<br><br>
+		</div>
+		<a data-link="main" class="page-link"> Main</a>
+		<br> <br>
+		<a data-link="settings" class="page-link"> Settings</a>
 		<br> <br>
 		
-		<a href = "manual.html"> Manual Config</a>
+		<a data-link="manual" class="page-link"> Manual Config</a>
 		<br> <br>
-		
 		<button id="disconnectButton" onClick="disconnect()">Disconnect</button>
-		<div id="receiveDiv"></div>
+		<script type="text/javascript" src="jquery-3.3.1.slim.min.js"></script>
+		<script type="text/javascript" src="cordova.js"></script> 
+        <script type="text/javascript" src="jscript.js"></script>
     </body>
 </html>
 			
