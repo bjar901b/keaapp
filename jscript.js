@@ -169,7 +169,6 @@ function incHeight() {
 
 function decHeight() {
 	sit--;
-	var minusData = stringToBytes(sit);
+	onConnect();
 	document.getElementById("newHeight").innerHTML = sit;
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, minusData, onSend, onError);
 }
