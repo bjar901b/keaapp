@@ -47,12 +47,8 @@ var condition = true;
 var newHeightElem = document.getElementById('newHeight');
 
 //tjekker om den har en værdi, ellers indsætter den vores siddende værdi
-if(condition){
-	document.getElementById('newHeight').innerHTML = sit;
-}
-else if(!condition) {
-	document.getElementById('newHeight').innerHTML = stand;
-}
+
+
 //else {
 	//newHeight.innerHTML = sit;
 //}
@@ -192,10 +188,16 @@ function sendStand() {
 	var sendData = stringToBytes(stand);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 	condition = false;
+	if(!condition) {
+	document.getElementById('newHeight').innerHTML = stand;
+}
 }
 
 function sendSit() {
 	var sendData = stringToBytes(sit);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 	condition = true;
+	if(condition){
+	document.getElementById('newHeight').innerHTML = sit;
+}
 }
