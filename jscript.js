@@ -136,12 +136,10 @@ function sendData() { // send data to Arduino
 }
 	
 function onSend(){
-	document.getElementById("sendDiv").innerHTML = "Sent: " + messageInput.value + "<br/>";
 }
 
 function disconnect() {
 	ble.disconnect(deviceId, onDisconnect, onError);
-	ble.close();
 }
 
 function onDisconnect(){
@@ -154,10 +152,18 @@ function onError(reason)  {
 function saveSettings() {
 	sit = document.getElementById('messageInput2').value;
 	stand = document.getElementById('messageInput3').value;
+	if(sit || stand < 60) {
+		document.getElementById("saved").innerHTML = "Value too low (Between 60 - 120)";
+	}
+	else if (sit || stand > 120) {
+		document.getElementById("saved").innerHTML = "Value too high (Between 60 - 120)";
+	}
+	else {
 	localStorage.setItem('sitting', sit);
 	localStorage.setItem('standing', stand);
 	
 	document.getElementById("saved").innerHTML = "Saved settings";
+	}
 }
 
 function incHeight() {
