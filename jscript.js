@@ -41,13 +41,17 @@ var sit = localStorage.getItem('sitting') == null ? '60' : localStorage.getItem(
 var stand = localStorage.getItem('standing') == null ? '120' : localStorage.getItem('standing');
 var ConnDeviceId;
 var deviceList =[];
+boolean condition = true;
 
 //sætter variablen til at hente newHeight div feltet så vi kan tjekke den
 var newHeightElem = document.getElementById('newHeight');
 
 //tjekker om den har en værdi, ellers indsætter den vores siddende værdi
-if(newHeightElem != null){
+if(newHeightElem != null && condition == true){
 	newHeight.innerHTML = sit;
+}
+else if (newHeightElem != null && condition == false) {
+	newHeight.innerHTML = stand;
 }
 
 //vi opretter en variabel så vi kan tjekke på messagefeltet
@@ -184,4 +188,11 @@ function decHeight() {
 function sendStand() {
 	var sendData = stringToBytes(stand);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
+	condition = false;
+}
+
+function sendSit() {
+	var sendData = stringToBytes(sit);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
+	condition = true;
 }
