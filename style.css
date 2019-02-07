@@ -1,6 +1,7 @@
 body{
 	background-color: cyan;
 	font-family:sans-serif;
+	margin: auto;
 }	
 img{
 	width: 100%;	
@@ -14,38 +15,45 @@ img{
 
 #bleDeviceList{
 	text-align: center;
+	margin: auto;
 }	
 #messageInput{
-	
+	margin: auto;
 }
 
 #list{
 	background-color: white;
 	text-align: center;
+	margin: auto;
 }
 
 #refreshButton{
 	width: 40%;
 	text-align: center;
+	margin: auto;
 }
 #sendButton{
 	width: 40%;
 	text-align: center;
+	margin: auto;
 }
 
 #saveButton {
 		width: 40%;
 		text-align: center;
+		margin: auto;
 }
 
 #plusButton {
 		width: 15%;
 		text-align: center;
+		margin: auto;
 }
 
 #minusButton {
 		width: 15%;
 		text-align: center;
+		margin: auto;
 }
 .page{
 	display:none;
