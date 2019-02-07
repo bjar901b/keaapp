@@ -161,15 +161,15 @@ function saveSettings() {
 
 function incHeight() {
 	sit++;
-	var connData = stringToBytes(sit);
+	var plusData = stringToBytes(sit);
 	document.getElementById("newHeight").innerHTML = sit;
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, connData, onSend, onError);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, plusData, onSend, onError);
 }
 
 
 function decHeight() {
 	sit--;
-	var connData = stringToBytes(sit);
+	var minusData = stringToBytes(sit);
 	document.getElementById("newHeight").innerHTML = sit;
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, connData, onSend, onError);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, minusData, onSend, onError);
 }
