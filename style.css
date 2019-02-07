@@ -89,3 +89,13 @@ p {
 #newHeight {
 	padding: 20px;
 }
+
+#sitButton {
+	height: 70px;
+	width: 140px;
+}
+
+#standButton {
+	height: 70px;
+	width: 140px;
+}
