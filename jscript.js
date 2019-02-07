@@ -41,18 +41,21 @@ var sit = localStorage.getItem('sitting') == null ? '60' : localStorage.getItem(
 var stand = localStorage.getItem('standing') == null ? '120' : localStorage.getItem('standing');
 var ConnDeviceId;
 var deviceList =[];
-boolean condition = true;
+//boolean condition = true;
 
 //sætter variablen til at hente newHeight div feltet så vi kan tjekke den
 var newHeightElem = document.getElementById('newHeight');
 
 //tjekker om den har en værdi, ellers indsætter den vores siddende værdi
-if(newHeightElem != null && condition == true){
+if(newHeightElem != null /*&& condition == true*/){
 	newHeight.innerHTML = sit;
 }
-else if (newHeightElem != null && condition == false) {
+else if (newHeightElem != null /*&& condition == false*/) {
 	newHeight.innerHTML = stand;
 }
+//else {
+	//newHeight.innerHTML = sit;
+//}
 
 //vi opretter en variabel så vi kan tjekke på messagefeltet
 var messageInput2Elem = document.getElementById('messageInput2');
@@ -93,7 +96,7 @@ function refreshDeviceList(){
 
 function onDiscoverDevice(device){
 	//Make a list in html and show devises
-		if(device.name == "*Insert name*") {
+		if(device.name == "Bord 4") {
 		var listItem = document.createElement('li'),
 		html = device.name+ "," + device.id;
 		listItem.innerHTML = html;
