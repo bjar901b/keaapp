@@ -1,59 +1,66 @@
 body{
 	background-color: cyan;
 	font-family:sans-serif;
-	margin: auto;
 }	
 img{
 	width: 100%;	
 }
+h1{
+	font-size: 270%;
+}
+
+p {
+	font-size: 200%;
+}
 
 #content {
 	width: 75%;
-	margin: auto;
+	align-content: center;
 	text-align: center;
+	font-size: 200%;
 }
 
 #bleDeviceList{
 	text-align: center;
-	margin: auto;
+	align-content: center;
 }	
 #messageInput{
-	margin: auto;
+	align-content: center;
 }
 
 #list{
 	background-color: white;
 	text-align: center;
-	margin: auto;
+	align-content: center;
 }
 
 #refreshButton{
 	width: 40%;
 	text-align: center;
-	margin: auto;
+	align-content: center;
 }
 #sendButton{
 	width: 40%;
 	text-align: center;
-	margin: auto;
+	align-content: center;
 }
 
 #saveButton {
 		width: 40%;
 		text-align: center;
-		margin: auto;
+		align-content: center;
 }
 
 #plusButton {
 		width: 15%;
 		text-align: center;
-		margin: auto;
+		align-content: center;
 }
 
 #minusButton {
 		width: 15%;
 		text-align: center;
-		margin: auto;
+		align-content: center;
 }
 .page{
 	display:none;
@@ -63,4 +70,16 @@ img{
 }
 .page-link{
 	cursor:pointer;
+}
+
+#statusDiv {
+	font-size: 200%;
+}
+
+#bleId {
+	font-size: 200%;
+}
+
+#debugDiv {
+	font-size: 200%;
 }
