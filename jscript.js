@@ -161,11 +161,15 @@ function saveSettings() {
 
 function incHeight() {
 	sit++;
+	var connData = stringToBytes(sit);
 	document.getElementById("newHeight").innerHTML = sit;
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, connData, onSend, onError);
 }
 
 
 function decHeight() {
 	sit--;
+	var connData = stringToBytes(sit);
 	document.getElementById("newHeight").innerHTML = sit;
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, connData, onSend, onError);
 }
