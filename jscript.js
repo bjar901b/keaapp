@@ -48,10 +48,10 @@ var newHeightElem = document.getElementById('newHeight');
 
 //tjekker om den har en værdi, ellers indsætter den vores siddende værdi
 if(condition){
-	newHeight.innerHTML = sit;
+	document.getElementById('newHeight').innerHTML = sit;
 }
 else if(!condition) {
-	newHeight.innerHTML = stand;
+	document.getElementById('newHeight').innerHTML = stand;
 }
 //else {
 	//newHeight.innerHTML = sit;
