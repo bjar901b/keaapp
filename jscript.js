@@ -47,10 +47,10 @@ var condition = true;
 var newHeightElem = document.getElementById('newHeight');
 
 //tjekker om den har en værdi, ellers indsætter den vores siddende værdi
-if(/*newHeightElem != null*/ condition == true){
+if(condition){
 	newHeight.innerHTML = sit;
 }
-else if(/*newHeightElem != null*/ condition == false) {
+else if(!condition) {
 	newHeight.innerHTML = stand;
 }
 //else {
