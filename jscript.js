@@ -41,17 +41,16 @@ var sit = localStorage.getItem('sitting') == null ? '60' : localStorage.getItem(
 var stand = localStorage.getItem('standing') == null ? '120' : localStorage.getItem('standing');
 var ConnDeviceId;
 var deviceList =[];
-var condition = true;
+ 
+
 
 //sætter variablen til at hente newHeight div feltet så vi kan tjekke den
 var newHeightElem = document.getElementById('newHeight');
 
-//tjekker om den har en værdi, ellers indsætter den vores siddende værdi
-
-
-//else {
-	//newHeight.innerHTML = sit;
-//}
+//tjekker om den har en værdi, ellers indsætter den vores siddende værdi¨
+if(newHeightElem != null) {
+	newHeight.innerHTML = sit;
+}
 
 //vi opretter en variabel så vi kan tjekke på messagefeltet
 var messageInput2Elem = document.getElementById('messageInput2');
@@ -187,17 +186,11 @@ function decHeight() {
 function sendStand() {
 	var sendData = stringToBytes(stand);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
-	condition = false;
-	if(!condition) {
-	document.getElementById('newHeight').innerHTML = stand;
-}
+	document.getElementById("newHeight").innerHTML = stand;
 }
 
 function sendSit() {
 	var sendData = stringToBytes(sit);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
-	condition = true;
-	if(condition){
-	document.getElementById('newHeight').innerHTML = sit;
-}
+	document.getElementById("newHeight").innerHTML = sit;
 }
