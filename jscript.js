@@ -141,6 +141,7 @@ function onSend(){
 
 function disconnect() {
 	ble.disconnect(deviceId, onDisconnect, onError);
+	ble.close();
 }
 
 function onDisconnect(){
@@ -169,6 +170,5 @@ function incHeight() {
 
 function decHeight() {
 	sit--;
-	onConnect();
 	document.getElementById("newHeight").innerHTML = sit;
 }
