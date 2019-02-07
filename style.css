@@ -10,14 +10,14 @@ h1{
 }
 
 p {
-	font-size: 200%;
+	font-size: 130%;
 }
 
 #content {
 	width: 75%;
 	align-content: center;
 	text-align: center;
-	font-size: 200%;
+	font-size: 130%;
 }
 
 #bleDeviceList{
@@ -52,13 +52,15 @@ p {
 }
 
 #plusButton {
-		width: 15%;
+		width: 25%;
+		height: 25%;
 		text-align: center;
 		align-content: center;
 }
 
 #minusButton {
-		width: 15%;
+		width: 25%;
+		height: 25%;
 		text-align: center;
 		align-content: center;
 }
@@ -73,13 +75,13 @@ p {
 }
 
 #statusDiv {
-	font-size: 200%;
+	font-size: 130%;
 }
 
 #bleId {
-	font-size: 200%;
+	font-size: 130%;
 }
 
 #debugDiv {
-	font-size: 200%;
+	font-size: 130%;
 }
