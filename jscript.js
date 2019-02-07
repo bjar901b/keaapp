@@ -178,3 +178,8 @@ function decHeight() {
 	sit--;
 	document.getElementById("newHeight").innerHTML = sit;
 }
+
+function sendStand() {
+	var sendData = stringToBytes(stand);
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
+}
