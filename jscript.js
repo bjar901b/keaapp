@@ -152,10 +152,10 @@ function onError(reason)  {
 function saveSettings() {
 	sit = document.getElementById('messageInput2').value;
 	stand = document.getElementById('messageInput3').value;
-	if(sit || stand < 60) {
+	if(sit < 60 || stand < 60) {
 		document.getElementById("saved").innerHTML = "Value too low (Between 60 - 120)";
 	}
-	else if (sit || stand > 120) {
+	else if (sit > 120 || stand > 120) {
 		document.getElementById("saved").innerHTML = "Value too high (Between 60 - 120)";
 	}
 	else {
