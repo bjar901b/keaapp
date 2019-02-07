@@ -1,3 +1,4 @@
+//Creating Jquery to be able to switch between pages in a single page design
 $(document).ready(function(){
 	$('.page-link').on('click', function(){
 		$('.active').removeClass('active');
@@ -36,7 +37,7 @@ var blue ={
     txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
     rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
-// oprettter 2 variabler vi kan arbejde med, henter værdier ind hvis de findes i localstorage allerede, ellers opretter vi standard værdier. 
+// Creates 2 variables we can work with, gets values from localstorage, if they exist already, otherwise we will make standard values 
 var sit = localStorage.getItem('sitting') == null ? '60' : localStorage.getItem('sitting');
 var stand = localStorage.getItem('standing') == null ? '120' : localStorage.getItem('standing');
 var ConnDeviceId;
@@ -44,18 +45,18 @@ var deviceList =[];
  
 
 
-//sætter variablen til at hente newHeight div feltet så vi kan tjekke den
+//Creating a variable that checks the newHeight Div and stores it.
 var newHeightElem = document.getElementById('newHeight');
 
-//tjekker om den har en værdi, ellers indsætter den vores siddende værdi¨
+//Checks to see if the div of newHeight has data in it, and puts our sitting value in as a standard
 if(newHeightElem != null) {
 	newHeight.innerHTML = sit;
 }
 
-//vi opretter en variabel så vi kan tjekke på messagefeltet
+//We create variables that can store our message input, and afterwards inputs the sitting and standing values in their text boxes
 var messageInput2Elem = document.getElementById('messageInput2');
 
-//Tjekker om der en værdi allerede i feltet, og hvis ikke så sætter den vores nuværende siddende højde
+
 if(messageInput2Elem != null){
 	messageInput2Elem.value = sit;
 }
@@ -76,7 +77,7 @@ function onDeviceReady(){
 	refreshDeviceList();
 }
 
-	 
+	 //Makes a fresh list with devices
 function refreshDeviceList(){
 	//deviceList =[];
 	document.getElementById("bleDeviceList").innerHTML = ''; // empties the list
@@ -90,7 +91,7 @@ function refreshDeviceList(){
 
 
 function onDiscoverDevice(device){
-	//Make a list in html and show devises
+	//Make a list in html and show devices, as long as the name fits our description
 		if(device.name == "*Bord 4*") {
 		var listItem = document.createElement('li'),
 		html = device.name+ "," + device.id;
@@ -99,7 +100,7 @@ function onDiscoverDevice(device){
 		}
 }
 
-
+//Attempts to connect the BT part and the application, returns a status on whether or not it connected.  Based on touch
 function conn(){
 	var  deviceTouch= event.srcElement.innerHTML;
 	document.getElementById("debugDiv").innerHTML =""; // empty debugDiv
@@ -109,7 +110,7 @@ function conn(){
 	ble.connect(ConnDeviceId, onConnect, onConnError);
  }
  
- //succes
+ //sucess in connection, also sends the sitting value to the table selected
 function onConnect(){
 	var connData = stringToBytes(sit);
 	document.getElementById("statusDiv").innerHTML = " Status: Connected";
@@ -118,7 +119,7 @@ function onConnect(){
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, connData, onSend, onError);
 }
 
-//failure
+//failure as well as an explanation as to why
 function onConnError(){
 	alert("Problem connecting");
 	document.getElementById("statusDiv").innerHTML = " Status: Disconnected";
@@ -132,7 +133,7 @@ function data(txt){
 	messageInput.value = txt;
 }	
 
-function sendData() { // send data to Arduino
+function sendData() { // send data to Arduino og changes value in our manual configuration
 	 var data = stringToBytes(messageInput.value);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 	document.getElementById("newHeight").innerHTML = messageInput.value;
@@ -140,18 +141,20 @@ function sendData() { // send data to Arduino
 	
 function onSend(){
 }
-
+//Disconnects our device
 function disconnect() {
 	ble.disconnect(deviceId, onDisconnect, onError);
 }
-
+//Changing of our status message, as long as disconnect works
 function onDisconnect(){
 	document.getElementById("statusDiv").innerHTML = "Status: Disconnected";
 }
+
 function onError(reason)  {
 	alert("ERROR: " + reason); // real apps should use notification.alert
 }
-
+/*Gets the values from our 2 messageInput fields, and saves them to a variable. Then we check to see if they are within our set requirements,
+and then we save all the values in Localstorage, as long as the values are witihin the requirements*/
 function saveSettings() {
 	sit = document.getElementById('messageInput2').value;
 	stand = document.getElementById('messageInput3').value;
@@ -168,7 +171,7 @@ function saveSettings() {
 	document.getElementById("saved").innerHTML = "Saved settings";
 	}
 }
-
+//Increases the height of the table, and changes the displayed value in manual configuration
 function incHeight() {
 	sit++;
 	var sendData = stringToBytes(sit);
@@ -176,20 +179,20 @@ function incHeight() {
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 }
 
-
+//Decreases the height of the table, and changes the displayed value in manual configuration
 function decHeight() {
 	sit--;
 	var sendData = stringToBytes(sit);
 	document.getElementById("newHeight").innerHTML = sit;
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 }
-
+//Sends our saved standing value to the BT device, and changes the manual configuration field
 function sendStand() {
 	var sendData = stringToBytes(stand);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 	document.getElementById("newHeight").innerHTML = stand;
 }
-
+//Sends our saved sitting value to the BT device, and changes the manual configuration field
 function sendSit() {
 	var sendData = stringToBytes(sit);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
