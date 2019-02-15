@@ -3,9 +3,10 @@ $(document).ready(function(){
 	$('.page-link').on('click', function(){
 		$('.active').removeClass('active');
 		$('#'+$(this).attr('data-link')+'-page').addClass('active');
-	});	
+	});
 });
 
+var sitting = true;
 
 // Based on an example:
 //https://github.com/don/cordova-plugin-ble-central
@@ -13,29 +14,29 @@ $(document).ready(function(){
 
 // ASCII only
 function bytesToString(buffer) {
-    return String.fromCharCode.apply(null, new Uint8Array(buffer));
+	return String.fromCharCode.apply(null, new Uint8Array(buffer));
 }
 
 // ASCII only
 function stringToBytes(string) {
-    var array = new Uint8Array(string.length);
-    for (var i = 0, l = string.length; i < l; i++) {
-        array[i] = string.charCodeAt(i);
-    }
-    return array.buffer;
+	var array = new Uint8Array(string.length);
+	for (var i = 0, l = string.length; i < l; i++) {
+		array[i] = string.charCodeAt(i);
+	}
+	return array.buffer;
 }
 
 // this is ble hm-10 UART service
 /*var blue= {
-    serviceUUID: "0000FFE0-0000-1000-8000-00805F9B34FB",
-    characteristicUUID: "0000FFE1-0000-1000-8000-00805F9B34FB"
+	serviceUUID: "0000FFE0-0000-1000-8000-00805F9B34FB",
+	characteristicUUID: "0000FFE1-0000-1000-8000-00805F9B34FB"
 };*/
 
 //the bluefruit UART Service
 var blue ={
 	serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
-    txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
-    rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
+	txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
+	rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
 // Creates 2 variables we can work with, gets values from localstorage, if they exist already, otherwise we will make standard values 
 var sit = localStorage.getItem('sitting') == null ? '60' : localStorage.getItem('sitting');
@@ -70,7 +71,7 @@ if(messageInput3Elem != null){
 
 function onLoad(){
 	document.addEventListener('deviceready', onDeviceReady, false);
-    bleDeviceList.addEventListener('touchstart', conn, false); // assume not scrolling
+	bleDeviceList.addEventListener('touchstart', conn, false); // assume not scrolling
 }
 
 function onDeviceReady(){
@@ -173,31 +174,34 @@ function saveSettings() {
 }
 //Increases the height of the table, and changes the displayed value in manual configuration
 function incHeight() {
-	var tempHeight = parseInt(sit);
-	tempHeight++;
-	var tempData = toString(tempHeight);
-	var sendData = stringToBytes(tempHeight);
-	document.getElementById("newHeight").innerHTML = tempHeight;
-	console.log(sendData);
+	sitting ? sit++ : stand++;
+	var data = sitting ? sit : stand;
+	var sendData = stringToBytes(String(data));
+	document.getElementById("newHeight").innerHTML = data;
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 }
 
 //Decreases the height of the table, and changes the displayed value in manual configuration
 function decHeight() {
-	sit--;
-	var sendData = stringToBytes(sit);
-	document.getElementById("newHeight").innerHTML = sit;
+	sitting ? sit-- : stand--;
+	var data = sitting ? sit : stand;
+	var sendData = stringToBytes(String(data));
+	document.getElementById("newHeight").innerHTML = data;
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 }
 //Sends our saved standing value to the BT device, and changes the manual configuration field
 function sendStand() {
+	sitting = false;
 	var sendData = stringToBytes(stand);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 	document.getElementById("newHeight").innerHTML = stand;
+	$('#current-mode').html('standing');
 }
 //Sends our saved sitting value to the BT device, and changes the manual configuration field
 function sendSit() {
+	sitting = true;
 	var sendData = stringToBytes(sit);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 	document.getElementById("newHeight").innerHTML = sit;
+	$('#current-mode').html('sitting');
 }
