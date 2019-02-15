@@ -144,7 +144,7 @@ function onSend(){
 }
 //Disconnects our device
 function disconnect() {
-	ble.disconnect(deviceId, onDisconnect, onError);
+	ble.disconnect(ConnDeviceId, onDisconnect, onError);
 }
 //Changing of our status message, as long as disconnect works
 function onDisconnect(){
