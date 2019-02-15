@@ -176,6 +176,7 @@ function incHeight() {
 	sit++;
 	var sendData = stringToBytes(sit);
 	document.getElementById("newHeight").innerHTML = sit;
+	console.log(sendData);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
 }
 
