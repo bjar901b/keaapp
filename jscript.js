@@ -173,8 +173,10 @@ function saveSettings() {
 }
 //Increases the height of the table, and changes the displayed value in manual configuration
 function incHeight() {
-	sit++;
-	var sendData = stringToBytes(sit);
+	var temp-height = parseInt(sit);
+	temp-height++;
+	var tempData = toString(sit);
+	var sendData = stringToBytes(tempData);
 	document.getElementById("newHeight").innerHTML = sit;
 	console.log(sendData);
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, sendData, onSend, onError);
